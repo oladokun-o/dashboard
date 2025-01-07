@@ -8,7 +8,7 @@ import { goto } from '$app/navigation';
 export const baseUrl =
 	import.meta.env.MODE === 'development'
 		? 'http://localhost:3000/'
-		: 'https://yourproductionurl.com/';
+		: 'https://payload-cms-megexe.vercel.app/';
 
 
 export const api = axios.create({

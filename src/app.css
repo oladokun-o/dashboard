@@ -1,0 +1,129 @@
+/* Basic CSS setup */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+	background-color: #f4f4f4;
+	color: #333;
+	overflow-y: hidden;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+/* Axiforma font-face */
+@font-face {
+	font-family: 'Axiforma';
+	src:
+		url('/fonts/Axiforma/Axiforma-Regular.woff') format('woff'),
+		url('/fonts/Axiforma/Axiforma-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* GothamPro normal font-face */
+@font-face {
+	font-family: 'Gotham Pro';
+	src: url('/fonts/GothamPro/GothamPro.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* GothamPro bold font-face */
+@font-face {
+	font-family: 'Gotham Pro';
+	src: url('/fonts/GothamPro/GothamPro-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+/* GothamPro medium font-face */
+@font-face {
+	font-family: 'Gotham Pro';
+	src: url('/fonts/GothamPro/GothamPro-Medium.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+/* GothamPro light font-face */
+@font-face {
+	font-family: 'Gotham Pro';
+	src: url('/fonts/GothamPro/GothamPro-Light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+/* Plus_Jakarta_Sans font-face (ttf) */
+@font-face {
+	font-family: 'Plus Jakarta Sans';
+	src: url('/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Plus_Jakarta_Sans font-face Bold (woff) */
+@font-face {
+	font-family: 'Plus Jakarta Sans';
+	src: url('/fonts/Plus_Jakarta_Sans/static/PlusJakartaSans-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+/* Inter font-face */
+@font-face {
+	font-family: 'Inter';
+	src: url('/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: normal;
+	font-optical-sizing: auto;
+}
+
+header h1 {
+	font-family: Axiforma;
+	font-size: 28px;
+	font-weight: 500;
+	line-height: 44.91px;
+	text-align: left;
+	text-underline-position: from-font;
+	text-decoration-skip-ink: none;
+	margin: 0;
+}
+
+.text.message-content span {
+	color: #0a2689 !important;
+}
+
+.status.completed {
+	background: #DCFCE7;
+	color: #14532D;
+}
+
+.status.completed .dot {
+	background-color: #22c55e;
+}
+
+.status.pending {
+	background: #fef9c3;
+	color: #713F12;
+}
+
+.status.pending .dot {
+	background-color: #facc15;
+}
+
+.status.canceled {
+	background: #fee2e2;
+	color: #7F1D1D;
+}
+
+.status.canceled .dot {
+	background-color: #ef4444;
+}

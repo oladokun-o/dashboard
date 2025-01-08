@@ -102,8 +102,8 @@ header h1 {
 }
 
 .status.completed {
-	background: #DCFCE7;
-	color: #14532D;
+	background: #dcfce7;
+	color: #14532d;
 }
 
 .status.completed .dot {
@@ -112,7 +112,7 @@ header h1 {
 
 .status.pending {
 	background: #fef9c3;
-	color: #713F12;
+	color: #713f12;
 }
 
 .status.pending .dot {
@@ -121,9 +121,41 @@ header h1 {
 
 .status.canceled {
 	background: #fee2e2;
-	color: #7F1D1D;
+	color: #7f1d1d;
 }
 
 .status.canceled .dot {
 	background-color: #ef4444;
+}
+
+/* Add transition as well */
+body.sidenav-closed .sidenav {
+	display: none;
+}
+
+body.sidenav-mobile .header {
+	position: relative;
+	z-index: 1500;
+	background-color: white;
+}
+
+body.sidenav-mobile .sidenav {
+	position: fixed;
+	z-index: 1000;
+	top: 120px;
+	left: -15px;
+	padding-bottom: 100px;
+}
+
+body.sidenav-mobile .sidenav .sidenav-box {
+	box-shadow: 0 0 5px #00000031;
+	border-radius: 0;
+}
+
+body.sidenav-mobile .main {
+	padding-left: 20px;
+}
+
+.sidenav {
+	transition: all 0.3s ease;
 }

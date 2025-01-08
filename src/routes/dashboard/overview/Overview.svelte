@@ -123,7 +123,7 @@
 			<div class="card chart">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col">
+						<div class="col-12 col-md mb-3 mb-md-0">
 							<h3>Revenue . Usage . Engagement</h3>
 							<button type="button" class="export-btn">
 								<img src={pdfIcon} alt="pdf" />
@@ -131,7 +131,7 @@
 							</button>
 						</div>
 
-						<div class="col-auto">
+						<div class="col-6 col-md-auto">
 							<div class="row">
 								<div class="col d-flex gap-2">
 									<div class="ellipse revenue"></div>
@@ -143,7 +143,7 @@
 							</div>
 						</div>
 
-						<div class="col-auto">
+						<div class="col-6 col-md-auto">
 							<div class="row">
 								<div class="col d-flex gap-2">
 									<div class="ellipse usage"></div>
@@ -155,7 +155,7 @@
 							</div>
 						</div>
 
-						<div class="col-auto">
+						<div class="col-6 col-md-auto">
 							<div class="row">
 								<div class="col d-flex gap-2">
 									<div class="ellipse engagement"></div>
@@ -225,13 +225,12 @@
 
 <div class="col-12 mt-3">
 	<div class="row">
-		<div class="col-12 col-md-8 mb-3">
+		<div class="col-12 col-lg-8 mb-3">
 			<div class="card chart">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col">
 							<h3>Recent Transactions</h3>
-							<p class="sub">Here are the lists of recent transactions</p>
 						</div>
 
 						<div class="col-auto">
@@ -242,8 +241,12 @@
 						</div>
 
 						<div class="col-12">
+							<p class="sub text-nowrap">Here are the lists of recent transactions</p>
+						</div>
+
+						<div class="col-12 overflow-x-auto">
 							<!-- Transaction Table -->
-							<table class="table">
+							<table class="table table-responsive">
 								<tbody>
 									{#each transactions as transaction}
 										<tr>
@@ -282,7 +285,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-md-4 mb-3">
+		<div class="col-12 col-lg-4 mb-3">
 			<div class="card chart">
 				<div class="container-fluid">
 					<div class="row">
@@ -292,7 +295,7 @@
 						</div>
 
 						<div class="container-fluid doctors py-3">
-							<div class="row">
+							<div class="row gap-3">
 								{#each doctors as doctor}
 									<div class="col-12">
 										<div class="row">
@@ -540,12 +543,21 @@
 	}
 
 	tbody tr td {
-		padding: 17.5px 0;
+		padding: 17.5px 5px;
 		vertical-align: middle;
+	}
+
+	tbody tr td:first-child {
+		padding-left: 0;
+	}
+
+	tbody tr td:last-child {
+		padding-right: 0;
 	}
 
 	tbody tr:last-child td {
 		border-bottom: none;
+		position: sticky;
 	}
 
 	.status {
@@ -585,6 +597,7 @@
 		text-decoration-skip-ink: none;
 		margin: 0;
 		color: #18181b;
+		white-space: nowrap;
 	}
 
 	.payment span,
@@ -597,6 +610,7 @@
 		text-underline-position: from-font;
 		text-decoration-skip-ink: none;
 		color: #71717a;
+		text-transform: capitalize;
 	}
 
 	.doctors h6 {

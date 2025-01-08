@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Logo from '$lib/images/svelte-logo.svg';
-	import { selectedNavItem } from '$lib/stores/sidenav';
+	import { isSideNavOpen, selectedNavItem, updateScreenSize } from '$lib/stores/sidenav';
 	import { onMount } from 'svelte';
 	import type { SideNav } from '../../../interfaces/sidenav.interface';
 	import type {
@@ -18,7 +18,7 @@
 	import { get, writable } from 'svelte/store';
 	import MessagesDropdown from './MessagesDropdown.svelte';
 	import NotificationDropdown from './NotificationDropdown.svelte';
-	import { baseUrl, user } from '$lib/stores/user';
+	import { user } from '$lib/stores/user';
 	import ProfileDropdown from './ProfileDropdown.svelte';
 	import userIcon from '$lib/images/user.svg';
 	import settingsIcon from '$lib/images/settings.svg';
@@ -34,8 +34,14 @@
 	let currentUser = get(user);
 	let isLoading = true;
 
+	const baseUrl =
+		import.meta.env.MODE === 'development'
+			? 'http://localhost:3000'
+			: 'https://payload-cms-megexe-production.up.railway.app';
+
 	// Simulate an API call to fetch user data
 	onMount(() => {
+		updateScreenSize(); 
 		setTimeout(() => {
 			isLoading = false; // Set loading to false when user data is ready
 		}, 1000); // Simulating a delay (replace with actual logic to load user data)
@@ -105,16 +111,15 @@
 			notificationDropdownItems.push({
 				title: item.title,
 				message: item.message.root.children[0].children[0].text,
-				time: item.time,
+				time: item.time
 			});
-		});		
+		});
 		totalUnreadNotifications = items.length;
 	});
 
 	let activeNotificationDropdownItem = writable<NotificationDropdownItem | null>(null);
 
 	activeNotificationDropdownItem.set(notificationDropdownItems[0]);
-
 
 	const profileDropdownItems: ProfileDropdownItem[] = [
 		{
@@ -164,25 +169,36 @@
 	let activeProfileDropdownItem = writable<ProfileDropdownItem | null>(null);
 
 	activeProfileDropdownItem.set(profileDropdownItems[0]);
+
+	// Handle side nav item open/close
+	const handleSideNavToggle = () => {
+		isSideNavOpen.update((value) => !value);
+	};
 </script>
 
 <header class="container-fluid">
 	<div class="row h-100 align-items-center">
-		<div class="col-3 logo">
+		<div class="col col-md-3 logo">
 			<!-- Logo -->
 			<a href="/dashboard">
 				<img src={Logo} alt="Logo" />
 			</a>
 		</div>
-		<div class="col-7 p-2">
+		<div class="col-auto col-md-7 p-2">
 			<div class="d-flex justify-content-between align-items-center h-100">
-				<div class="col-auto p-3">
+				<!-- Menu for mobile screen -->
+				<div class="col-auto d-block d-lg-none">
+					<button class="btn btn-transparent fw-bold p-0" on:click={handleSideNavToggle}>
+						MENU
+					</button>
+				</div>
+				<div class="col-auto p-3 d-none d-lg-block">
 					<!-- Page title -->
 					<h1>
 						{pageTitle}
 					</h1>
 				</div>
-				<div class="col-5">
+				<div class="col-5 col-md-8 d-none d-md-block">
 					<!-- Nav items -->
 					<div class="row">
 						<div class="d-flex justify-content-center align-items-center col p-0">
@@ -198,7 +214,7 @@
 								</div>
 							</Dropdown>
 						</div>
-						<div class="d-flex justify-content-center align-items-center col-xxl-3 col-lg col-md">
+						<div class="d-flex justify-content-center align-items-center col-xxl-2 col-lg col-md">
 							<!-- Messages dropdown -->
 							<MessagesDropdown
 								{messagesDropdownItems}
@@ -212,7 +228,7 @@
 								</div>
 							</MessagesDropdown>
 						</div>
-						<div class="d-flex justify-content-center align-items-center col-xxl-3 col-lg col-md">
+						<div class="d-flex justify-content-center align-items-center col-xxl-2 col-lg col-md">
 							<!-- Notifications -->
 							<NotificationDropdown
 								{notificationDropdownItems}
@@ -232,7 +248,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-2">
+		<div class="col-auto col-md-2">
 			<!-- Profile dropdown -->
 			<ProfileDropdown {profileDropdownItems} activeDropdownItem={$activeProfileDropdownItem}>
 				<div class="gap-3 d-flex align-items-center">

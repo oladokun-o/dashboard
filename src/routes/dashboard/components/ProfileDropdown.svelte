@@ -101,6 +101,7 @@
 		justify-content: space-between;
 		overflow: hidden;
 		top: 35px;
+		right: 0;
 		width: 243px;
 	}
 

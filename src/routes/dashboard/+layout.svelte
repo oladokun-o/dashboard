@@ -20,7 +20,7 @@
 
 	<div class="container-fluid main-contn">
 		<div class="row h-100">
-			<div class="sidenav col-auto">
+			<div class="sidenav col-auto" id="sidenav">
                 <SideNav />
             </div>
 			<div class="col main">

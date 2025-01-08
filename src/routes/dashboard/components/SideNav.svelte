@@ -4,6 +4,7 @@
 	import { isSideNavOpen, selectedNavItem, sideNavItems } from '$lib/stores/sidenav';
 	import { onMount } from 'svelte';
 	import type { SideNav } from '../../../interfaces/sidenav.interface';
+	import { get } from 'svelte/store';
 
 	// Close side nav when an item is clicked
 	function handleNavItemClick(item: SideNav) {
@@ -16,6 +17,19 @@
 			selectedNavItem.set(item);
 		}
 	}
+	
+	let isOpen = false;
+
+	// Subscribe to the sideNavItems store
+	isSideNavOpen.subscribe((value) => {
+		isOpen = value;
+	});
+	
+	const closeSideNav = () => {
+		if (!isOpen) {
+			isSideNavOpen.set(false);
+		}
+	};
 
 	// On mount, restore the selected nav item
 	onMount(() => {
@@ -23,6 +37,20 @@
 		if (storedItem) {
 			selectedNavItem.set(JSON.parse(storedItem));
 		}
+
+		// Close sidenav when clicking outside
+		const handleClickOutside = (event: MouseEvent) => {
+			const el = document.getElementById('sidenav');
+			if (el && !el.contains(event.target as Node)) {
+				closeSideNav();
+			}
+		};
+
+		document.addEventListener('click', handleClickOutside);
+
+		return () => {
+			document.removeEventListener('click', handleClickOutside);
+		};
 	});
 
 	// Reactively update the selected item and save to localStorage

@@ -1,38 +1,68 @@
-# sv
+### Megaexe Screening Test Web Application Frontend
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This repository contains the frontend code for the Megaexe Screening Test Web Application. It was developed using **SvelteKit** to implement the provided UI design and consume APIs from the Payload CMS backend.
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Features
+1. **UI Implementation**  
+   - Replicated the Figma design, ensuring pixel-perfect layouts using the provided assets, fonts, and colors.  
+   - Implemented responsiveness for mobile, tablet, and desktop views.
 
-```bash
-# create a new project in the current directory
-npx sv create
+2. **API Consumption**  
+   - Integrated with the Payload CMS backend to dynamically fetch and render content.
 
-# create a new project in my-app
-npx sv create my-app
-```
+3. **Navigation**  
+   - Single-page and multi-page capabilities, as required by the project.
 
-## Developing
+4. **Resposive**
+    - The web app is responsive and works well on mobile, tablet, and desktop.    
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+5. **Performance**  
+   - Optimized for fast loading and smooth transitions.
 
-```bash
-npm run dev
+---
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### Setup Instructions
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/oladokun-o/dashboard.git
+   cd dashboard
+   ```
 
-## Building
+2. Install dependencies:  
+   ```bash
+   npm install
+   ```
 
-To create a production version of your app:
+3. Start the development server:  
+   ```bash
+   npm run dev
+   ```
 
-```bash
-npm run build
-```
+5. Build for production:  
+   ```bash
+   npm run build
+   ```
 
-You can preview the production build with `npm run preview`.
+6. Preview production build:  
+   ```bash
+   npm run preview
+   ```
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+---
+
+### Deployment
+The frontend is deployed on [Deployment Platform] and accessible at:  
+[**Production Frontend URL**](https://payload-cms-megexe-production.up.railway.app/)
+
+---
+
+### Tools and Technologies
+- **SvelteKit**: For building the application.
+- **Vite**: For development and production builds.
+- **CSS**: For styling.
+- **Deployment Platform**: Netliify.
+
+---
+

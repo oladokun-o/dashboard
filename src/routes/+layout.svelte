@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { fetchMessagesAndNotifications } from '$lib/stores/header';
 	import '../app.css';
 	import 'bootstrap/dist/css/bootstrap.min.css';
 	import { onMount } from 'svelte';
@@ -11,9 +10,6 @@
 	onMount(() => {
 		// Set the page title dynamically
 		document.title = 'Login';
-
-		// Fetch messages & notifications
-		fetchMessagesAndNotifications();
 	});
 </script>
 

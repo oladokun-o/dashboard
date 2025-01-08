@@ -174,6 +174,11 @@
 	const handleSideNavToggle = () => {
 		isSideNavOpen.update((value) => !value);
 	};
+
+	const revertToDefaultProfilePicture = (event: Event) => {
+		const target = event.target as HTMLImageElement;
+		target.src = defaultUserPng;
+	};
 </script>
 
 <header class="container-fluid">
@@ -256,7 +261,7 @@
 						<!-- Avatar -->
 						<div class="avatar"></div>
 					{:else if currentUser?.profilePicture}
-						<img class="user-image" src={baseUrl + currentUser?.profilePicture.url} alt="User" />
+						<img class="user-image" src={baseUrl + currentUser?.profilePicture.url} on:error={(event) => revertToDefaultProfilePicture(event)} alt="User" />
 					{:else}
 						<img class="user-image" src={defaultUserPng} alt="User" />
 					{/if}

@@ -116,7 +116,7 @@ export const isTokenValid = (): boolean => {
 };
 
 api.interceptors.request.use((config) => {
-	if (!isTokenValid()) {
+	if (localStorage.getItem('token') && !isTokenValid()) {
 		clearUser();
 		clearToken();
 		const message: string = 'Token expired, user logged out';

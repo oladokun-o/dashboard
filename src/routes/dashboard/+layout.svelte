@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { user } from '$lib/stores/user';
+	import { onMount } from 'svelte';
 	import type { User } from '../../interfaces/user';
 	import Header from './components/Header.svelte';
 	import SideNav from './components/SideNav.svelte';
+	import { fetchMessagesAndNotifications } from '$lib/stores/header';
 
 	let { children } = $props();
 	let currentUser: User | null = null;
@@ -10,6 +12,11 @@
 	// Subscribe to the user store
 	user.subscribe((value) => {
 		currentUser = value;
+	});
+
+	onMount(() => {
+		// Fetch messages & notifications
+		if (currentUser) fetchMessagesAndNotifications();
 	});
 </script>
 

@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { toasts } from 'svelte-toasts';
 import type { LoginSuccessResponse } from '../interfaces/user';
-import { api, clearToken, clearUser, isLoggingIn, token, user } from './stores/user';
+import { api, clearUser, isLoggingIn, token, user } from './stores/user';
 import { goto } from '$app/navigation';
 import { messages, notifications } from './stores/header';
 import type { MessagesResponse } from '../interfaces/message.interface';
@@ -56,7 +56,7 @@ export const logout = async (): Promise<void> => {
 		await api.post('/users/logout');
 		toasts.success('Logout successful');
 		clearUser();
-		clearToken();
+		localStorage.removeItem('token');
 		goto('/');
 	} catch (error) {
 		console.error('Logout error:', error);

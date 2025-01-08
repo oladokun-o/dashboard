@@ -65,7 +65,13 @@ This repository contains the frontend code for the Megaexe Screening Test Web Ap
    ```bash
    npm run preview
    ```
+### **Login Credentials**  
 
+To test the application, use the following credentials:  
+
+#### **Admin Account**  
+- **Email**: `oladipupooladokun@gmail.com`  
+- **Password**: `TGidm62k@tbwiAn`  
 ---
 
 ### Deployment

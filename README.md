@@ -23,6 +23,22 @@ This repository contains the frontend code for the Megaexe Screening Test Web Ap
 
 ---
 
+### Challenges
+1. **API Integration**  
+   - **Problem** Understanding the API response structure and integrating it into the frontend.  
+   - **Solution** Studied the API documentation and experimented with different data structures to render the content correctly.
+
+2. **Responsiveness**
+    - **Problem** No mobile design was provided in the Figma file.
+    - **Solution** Implemented a responsive design based on the desktop design and tested on different devices to ensure compatibility.
+
+3. **Media Files Failing in Production**
+    - **Problem** Images were not loading via the URL in production.
+    - **Solution** Reverted to using the local images in the assets folder (temporary solution).
+
+---
+
+
 ### Setup Instructions
 1. Clone the repository:  
    ```bash
